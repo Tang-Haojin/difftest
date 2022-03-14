@@ -121,6 +121,7 @@ INTERFACE_INT_WRITEBACK {
   RETURN_NO_NULL
   auto packet = difftest[coreid]->get_physical_reg_state();
   if (valid) {
+    Assert(dest < DIFFTEST_MAX_PRF_SIZE, "Integer register index overflow\n");
     packet->gpr[dest] = data;
   }
 }
@@ -166,6 +167,7 @@ INTERFACE_FP_WRITEBACK {
   RETURN_NO_NULL
   auto packet = difftest[coreid]->get_physical_reg_state();
   if (valid) {
+    Assert(dest < DIFFTEST_MAX_PRF_SIZE, "FP register index overflow\n");
     packet->fpr[dest] = data;
   }
 }
